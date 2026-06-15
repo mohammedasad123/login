@@ -1,0 +1,171 @@
+
+
+
+<script>
+
+if(localStorage.getItem("loggedIn") !== "true"){
+
+    window.location.href =
+    "login.html";
+
+}
+
+</script>
+<script>
+
+function logout(){
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    window.location.href =
+    "alogin.html";
+}
+
+function downloadPDF(){
+
+    window.print();
+}
+
+function shareWhatsApp(){
+
+    let total =
+    document.getElementById(
+    "grandTotal").value;
+
+    let text =
+    "Invoice Total: ₹" +
+    total;
+
+    window.open(
+    "https://boisterous-wisp-c82dec.netlify.app/");
+}
+
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3DYCPRO Login</title>
+    <style>
+        
+        body{
+            font-family:Arial,sans-serif;
+            background:#007bff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .login-box{
+            background:white;
+            padding:40px;
+            border-radius:10px;
+            width:350px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#007bff;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+            box-sizing:border-box;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #error{
+            color:red;
+            text-align:center;
+        }
+    </style>
+    <div class="login-container">
+    <div class="logo-container">
+        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEVTaVqKUbgMcpps6pa-Ap3OI8tUB1O3wACRSsAAm2ESVX8zOCsZO__hjsE.png" alt="Company Logo" class="logo">
+    </div>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h2>3DYCPRO Invoice Login</h2>
+
+    <form id="loginForm">
+
+        <input type="text"
+               id="username"
+               placeholder="Username"
+               required>
+
+        <input type="password"
+               id="password"
+               placeholder="Password"
+               required>
+
+        <button type="submit">
+            Login
+        </button>
+
+        <p id="error"></p>
+
+    </form>
+
+</div>
+
+<script>
+
+document.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    let username =
+        document.getElementById("username").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    if(username==="admin" &&
+       password==="123456"){
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+        window.location.href =
+            "3dycpro invoice.html";
+
+    }else{
+
+        document.getElementById("error")
+        .innerHTML =
+        "Invalid Username or Password";
+    }
+});
+
+</script>
+
+</body>
+</html>
